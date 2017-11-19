@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello, World!</title>
+    <script type="application/javascript">
+        var nombre = "Ronald Mármol";
+        var edad = 26;
+        var peso = 26.5;
+        console.log(nombre);
+
+        //    alert(nombre);
+        var principal = 0;
+
+        function ciclo(hasta) {
+//            for (var i = 1; i <= ; i++) {
+//                principal += i;
+//            }
+            console.log((hasta + 1) * (hasta / 2));
+        };
+
+        function recorrer() {
+            var numero = document.getElementById("numero").value;
+            console.log(numero);
+            ciclo(numero);
+        };
+
+        ciclo(10000000000000);
+        ciclo(1000);
+    </script>
 </head>
 <body>
-Hola Ronald.
+
+<label for="numero">Entre un numero</label>
+<input id="numero" type="text">
+<button onclick="recorrer();">Correr</button>
 </body>
 </html>
