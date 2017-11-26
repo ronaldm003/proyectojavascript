@@ -3,64 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Estudiante</title>
-
-    <script src="resources/scripts/Estudiante.js"></script>
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="resources/js/Estudiante.js"></script>
 </head>
 <body>
-
-<table>
-    <tr>
-        <td>
+<div style="width: 500px; align-content: center;">
+    <form>
+        <div class="form-group">
             <label for="code">Id</label>
-        </td>
-        <td>
-            <input id="code" type="text">
-        </td>
-    </tr>
-    <tr>
-        <td>
+            <input id="code" class="form-control" type="text" placeholder="Id">
+        </div>
+        <div class="form-group">
             <label for="nombre">Nombre</label>
-        </td>
-        <td>
-            <input id="nombre" type="text">
-        </td>
-    </tr>
-    <tr>
-        <td>
+            <input id="nombre" class="form-control" type="text" placeholder="Nombre">
+        </div>
+        <div class="form-group">
             <label for="matricula">Matricula</label>
-        </td>
-        <td>
-            <input id="matricula" type="text">
-        </td>
-    </tr>
-    <tr>
-        <td>
+            <input id="matricula" class="form-control" type="text" placeholder="Matricula">
+        </div>
+        <div class="form-group">
             <label for="identificacion">Identificacion</label>
-        </td>
-        <td>
-            <input id="identificacion" type="text">
-        </td>
-    </tr>
-    <tr>
-        <td>
+            <input id="identificacion" class="form-control" type="text" placeholder="Identificacion">
+        </div>
+        <div class="form-group">
             <label for="telefono">Telefono</label>
-        </td>
-        <td>
-            <input id="telefono" type="text">
-        </td>
-    </tr>
-    <tr>
-        <td>
+            <input id="telefono" class="form-control" type="text" placeholder="Telefono">
+        </div>
+        <div class="form-group">
             <label for="email">Email</label>
-        </td>
-        <td>
-            <input id="email" type="text">
-        </td>
-    </tr>
-</table>
+            <input id="email" class="form-control" type="email" placeholder="Email">
+        </div>
+    </form>
 
-<button onclick="save();">Save</button>
-<button onclick="saveEst();">Save Estudiante</button>
+</div>
+<button class="btn" onclick=" save();">Save</button>
+<button class="btn btn-primary" onclick=" saveEst();">Save Estudiante
+</button>
 
 
 <table border="1" id="estudiantes">
