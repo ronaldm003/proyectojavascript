@@ -7,43 +7,56 @@
     <script src="resources/js/Estudiante.js"></script>
 </head>
 <body>
-<div style="width: 500px; align-content: center;">
-    <form>
-        <div class="form-group">
-            <label for="code">Id</label>
-            <input id="code" class="form-control" type="text" placeholder="Id">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4">
+            <form>
+                <div class="form-group">
+                    <label for="code">Id</label>
+                    <input id="code" class="form-control" type="text" placeholder="Id">
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" class="form-control" type="text" placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                    <label for="matricula">Matricula</label>
+                    <input id="matricula" class="form-control" type="text" placeholder="Matricula">
+                </div>
+                <div class="form-group">
+                    <label for="identificacion">Identificacion</label>
+                    <input id="identificacion" class="form-control" type="text" placeholder="Identificacion">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Telefono</label>
+                    <input id="telefono" class="form-control" type="text" placeholder="Telefono">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" class="form-control" type="email" placeholder="Email">
+                </div>
+            </form>
+            <button class="btn" onclick=" save();">Save</button>
+            <button class="btn btn-primary" onclick=" saveEst();">Save Estudiante</button>
         </div>
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input id="nombre" class="form-control" type="text" placeholder="Nombre">
-        </div>
-        <div class="form-group">
-            <label for="matricula">Matricula</label>
-            <input id="matricula" class="form-control" type="text" placeholder="Matricula">
-        </div>
-        <div class="form-group">
-            <label for="identificacion">Identificacion</label>
-            <input id="identificacion" class="form-control" type="text" placeholder="Identificacion">
-        </div>
-        <div class="form-group">
-            <label for="telefono">Telefono</label>
-            <input id="telefono" class="form-control" type="text" placeholder="Telefono">
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" class="form-control" type="email" placeholder="Email">
-        </div>
-    </form>
 
+        <div class="col-lg-8">
+            <table id="estudiantes" class="table table-condensed table-responsive">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Matricula</th>
+                    <th>Identificacion</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+
+    </div>
 </div>
-<button class="btn" onclick=" save();">Save</button>
-<button class="btn btn-primary" onclick=" saveEst();">Save Estudiante
-</button>
-
-
-<table border="1" id="estudiantes">
-</table>
-
 
 </body>
 </html>
