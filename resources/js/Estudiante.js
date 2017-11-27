@@ -30,6 +30,21 @@ function save() {
     console.log(identification);
     console.log(telefono);
     console.log(email);
+    generateRandomStudent()
+}
+
+function generateRandomStudent() {
+    let nombres = ["ronald", "ronny", "aluis", "victor", "pedro", "Luis", "Alberto", "Santiago", "Pepo", "Luca"];
+    for (let i = 0; i < 10; i++) {
+        let estudiante = new Estudiante();
+        estudiante.id = i;
+        estudiante.nombre = nombres[i];
+        estudiante.matricula = Math.floor((Math.random() * 10000000) + 1);
+        estudiante.identificacion = Math.floor((Math.random() * 10000000000) + 1);
+        estudiante.telefono = Math.floor((Math.random() * 999) + 1) + "-" + Math.floor((Math.random() * 999) + 1) + "-" + Math.floor((Math.random() * 9999) + 1);
+        estudiante.email = nombres[i] + Math.floor((Math.random() * 99) + 1) + "@gmail.com";
+        addRow(estudiante)
+    }
 }
 
 
