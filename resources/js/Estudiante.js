@@ -16,9 +16,14 @@ let Estudiante = function () {
 };
 
 function agregarEstudiante(estudiante) {
-    let rowEstudiante = "<tr><td>" + estudiante.id + "</td><td>" + estudiante.nombre + "</td><td>" + estudiante.matricula + "</td><td>" +
+    let rowEstudiante = "<tr><td>" + "<div><label><input type=\"checkbox\" value=\"\"></div> " +
+        "</td><td>" + estudiante.id + "</td><td>" + estudiante.nombre + "</td><td>" + estudiante.matricula + "</td><td>" +
         estudiante.identificacion + "</td><td>" + estudiante.telefono + "</td><td>" + estudiante.email + "</td></tr>";
     $("table tbody").append(rowEstudiante);
+}
+
+function removerEstudiante() {
+    $("input[type=checkbox]:checked").closest("tr").remove();
 }
 
 function guardarDB(estudiante) {
@@ -63,5 +68,10 @@ $(document).ready(function () {
 
         agregarEstudiante(estudiante);
         guardarDB(estudiante);
-    })
+    });
+
+    $("#removeEst").click(function () {
+        removerEstudiante();
+    });
+
 });
