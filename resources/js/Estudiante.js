@@ -21,7 +21,30 @@ function agregarEstudiante(estudiante) {
     $("table tbody").append(rowEstudiante);
 }
 
+function guardarDB(estudiante) {
+
+    myStorage = window.localStorage;
+
+    let estudiantes = [];
+    let dbEstudiantes = myStorage.getItem("estudiantes");
+    if (dbEstudiantes != null) {
+        estudiante = JSON.parse(dbEstudiantes);
+    }
+    estudiantes.push(estudiante);
+    myStorage.setItem("estudiantes", JSON.stringify(estudiantes));
+}
+
 $(document).ready(function () {
+    myStorage = window.localStorage;
+
+    var dbEstudiantes = myStorage.getItem("estudiantes");
+    if (dbEstudiantes != null) {
+        var estudiantes = JSON.parse(dbEstudiantes);
+        $.each(estudiantes, function (i, estudiante) {
+            agregarEstudiante(estudiante);
+        });
+    }
+
     $("#addEst").click(function () {
         id = $("#code").val();
         nombre = $("#nombre").val();
@@ -42,7 +65,3 @@ $(document).ready(function () {
         guardarDB(estudiante);
     })
 });
-
-function guardarDB(estudiante) {
-my
-}
