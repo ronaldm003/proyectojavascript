@@ -23,7 +23,32 @@ function agregarEstudiante(estudiante) {
 }
 
 function removerEstudiante() {
-    $("input[type=checkbox]:checked").closest("tr").remove();
+    myStorage = window.localStorage;
+
+    // let toBeRemoved = $("input[type=checkbox]:checked").closest("tr");
+    // var dbEstudiantes = myStorage.getItem("estudiantes");
+    // if (dbEstudiantes != null) {
+    //     var estudiantes = JSON.parse(dbEstudiantes);
+    //     $.each(estudiantes, function (i, estudiante) {
+    //         toBeRemoved.each(function (index) {
+    //             console.log(index + ": " + $(this));
+    //             console.log(estudiante);
+    //         });
+    //     });
+    // }
+
+    var checkboxValues = $('input[type="checkbox"][name="checkboxgroup"]:checked').map(function () {
+
+        return $(this).val();
+    }).toArray();
+
+    for (let klk of checkboxValues) {
+        console.log(checkboxValues)
+    }
+    // myStorage.getItem(this);
+    // myStorage.removeItem(estudiante);
+    // console.log(JSON.stringify(toBeRemoved));
+    toBeRemoved.remove();
 }
 
 function guardarDB(estudiante) {
@@ -33,7 +58,7 @@ function guardarDB(estudiante) {
     let estudiantes = [];
     let dbEstudiantes = myStorage.getItem("estudiantes");
     if (dbEstudiantes != null) {
-        estudiante = JSON.parse(dbEstudiantes);
+        estudiantes = JSON.parse(dbEstudiantes);
     }
     estudiantes.push(estudiante);
     myStorage.setItem("estudiantes", JSON.stringify(estudiantes));
@@ -66,8 +91,8 @@ $(document).ready(function () {
         estudiante.telefono = telefono;
         estudiante.email = email;
 
-        agregarEstudiante(estudiante);
         guardarDB(estudiante);
+        agregarEstudiante(estudiante);
     });
 
     $("#removeEst").click(function () {
