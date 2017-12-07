@@ -9,18 +9,29 @@
         var root = 'https://jsonplaceholder.typicode.com';
         $(document).ready(function () {
             $("#search").click(function () {
-
                 let postId = $("#id_post").val();
+                let myUrl;
+                if (postId === "") {
+                    myUrl = root + '/posts';
+                } else {
+                    myUrl = root + '/posts' + '/' + postId;
+                }
                 $.ajax({
-                    url: root + '/posts/' + postId,
+                    url: myUrl,
                     method: 'GET'
                 }).then(function (data) {
-                    console.log(data.title);
+                    console.log(data);
                     $("#title").text(data.title);
                     $("#body").text(data.body);
+                    if (data.length > 1) {
+                        $.each(data, function (i, post) {
+                            let daklk = "<h2>" + post.title + "</h2>" + "<br>" + "<h3>" + post.body + "</h3>";
+                            $("div ").append(daklk);
+                        });
+                    });
+                        });
+                    }
                 });
-            });
-        });
         let Post = function () {
             let self = this;
             self.userId;
