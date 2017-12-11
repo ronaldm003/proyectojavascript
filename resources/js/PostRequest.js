@@ -1,6 +1,4 @@
-function cargarPost() {
-    let root = 'https://jsonplaceholder.typicode.com';
-
+function cargarPost(root) {
     $.ajax({
         url: root + '/posts',
         method: 'GET'
@@ -14,15 +12,15 @@ function cargarPost() {
         $.each(data, function (i, postData) {
             let existe = postData.id in favPost;
             let post = "<div class='row'>" +
-                "<div class='col-md-12'>" +
-                "<h3>" + postData.title + "</h3>" + "</div>" + "</div>" +
+                "<div class='col-sm-10'>" +
+                "<h2>" + postData.title + "</h2>" + "</div>" + "</div>" +
                 "<div class='row'>" +
-                "<div class='col-md-10'>" +
-                "<a class='publicador' href='#>" +
-                "<span class='glyphicon glyphicon-user'></span>Ronald Marmol @hotmail.com</a>" +
+                "<div class='col-sm-10 '" +
+                "<a class='publicador text-right' href='#>" +
+                "<span class='glyphicon glyphicon-user '></span>Ronald Marmol @hotmail.com</a>" +
                 "</div>" +
-                "<div class='col-md-2'>" +
-                "<button class='btn glyphicon " + (existe ? 'glyphicon-star' : 'glyphicon-star-empty') + " post_boton' data-post_id='" + postData.id + "'></button>" +
+                "<div class='col-sm-2'>" +
+                "<button class=" + (existe ? 'glyphicon-star' : ' glyphicon-star-empty') + ""btn glyphicon  post_button" data-post_id='" + postData.id + "'></button>" +
                 "</div>" +
                 "</div>" +
                 "<div class='row'>" +
@@ -30,6 +28,7 @@ function cargarPost() {
                 "<p>" + postData.body + "</p>" +
                 "</div>" +
                 "</div>";
+            console.log(post);
             $('#post').append(post);
         });
         $('.post_boton').click(function () {
@@ -47,6 +46,22 @@ function cargarPost() {
             }*/
 
         });
+    });
+
+}
+
+function cargarUsuarios(root) {
+    $.ajax({
+        url: root + '/users',
+        method: 'GET'
+    }).then(function (data) {
+        let localStorage = window.localStorage;
+        let users = {};
+        let dbUsers = localStorage.getItem('users');
+        if (dbUsers != null) {
+            users = JSON.parse(dbUsers);
+        }
+        console.log(data)
     });
 
 }
@@ -71,6 +86,7 @@ function agregarPostFavorito(postId) {
 }
 
 $(document).ready(function () {
-
-    cargarPost();
+    let root = 'https://jsonplaceholder.typicode.com';
+    cargarUsuarios(root);
+    cargarPost(root);
 });
