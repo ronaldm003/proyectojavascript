@@ -1,72 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="resources/css/font-awesome.min.css" crossorigin="anonymous">
+    <title>POST - INDEX</title>
+
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
     <script src="resources/js/jquery-3.2.1.min.js"></script>
-    <script type="application/javascript">
-        $(document).ready(function () {
-            var root = 'https://jsonplaceholder.typicode.com';
-            let myUrl;
-            myUrl = root + '/posts/4';
-            $.ajax({
-                url: myUrl,
-                method: 'GET'
-            }).then(function (data) {
-                for (let i = 0; i < data.toArray().length; i++) {
-                    console.log(post.title + " " + post.body);
-                    let postDiv = "<div><h2 id=\"post_title\">" + data[i].title + "<div class=\"rating\">\n" +
-                        "                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>\n" +
-                        "            </div>\n" +
-                        "            </h2>\n" +
-                        "            </div>\n" +
-                        "            <form>\n" +
-                        "            <h3 id=\"body\">" + data[i].body + "</h3>\n" +
-                        "            <div style=\"alignment: right;\">\n" +
-                        "                <p class=\"text-right\">" + "ronald@gotmail.com (Ronald) " + "</p> </div></form>";
-                    $("div" + i).append(postDiv);
-                }
+    <script src="resources/js/PostRequest.js"></script>
 
-            });
-        });
-    </script>
-    <style>
-
-        .rating {
-            unicode-bidi: bidi-override;
-            direction: rtl;
-        }
-
-        .rating > span {
-            display: inline-block;
-            position: relative;
-            width: 1.1em;
-        }
-
-        .rating > span:hover:before,
-        .rating > span:hover ~ span:before {
-            content: "\2605";
-            position: absolute;
+    <style type="text/css">
+        .publicador {
+            color: grey;
         }
     </style>
+
 </head>
 <body>
 <div class="container">
-    <div>
-        <h2 id="post_title">Post Tittle
-            <div class="rating">
-                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-            </div>
-        </h2>
+    <div id="post" class="row">
+
     </div>
-    <form>
-        <h3 id="body">aqui va el body</h3>
-        <div style="alignment: right;">
-            <p class="text-right">ronald@gotmail.com (Ronald)</p>
-        </div>
-    </form>
 </div>
 </body>
 </html>
