@@ -1,15 +1,28 @@
 function cargarPost(root) {
+    let userList = {};
     $.ajax({
         url: root + '/posts',
         method: 'GET'
     }).then(function (data) {
         let localStorage = window.localStorage;
-        let favPost = {};
+        let favPost = [];
         let dbFavPost = localStorage.getItem('favPost');
         if (dbFavPost != null) {
             favPost = JSON.parse(dbFavPost);
         }
+        let lsUsers = window.localStorage;
+        let dbUsers = lsUsers.getItem('users');
+        if (dbUsers != null) {
+            userList = JSON.parse(dbUsers)
+        }
         $.each(data, function (i, postData) {
+            let userEmail;
+            if (userList[i] instanceof User) {
+                if (postData.userId in userList) {
+                    userEmail = userList.email;
+                }
+            }
+
             let existe = postData.id in favPost;
             let post = "<div class='row'>" +
                 "<div class='col-sm-10'>" +
@@ -17,7 +30,7 @@ function cargarPost(root) {
                 "<div class='row'>" +
                 "<div class='col-sm-10 '" +
                 "<a class='publicador text-right' href='#>" +
-                "<span class='glyphicon glyphicon-user '></span>Ronald Marmol @hotmail.com</a>" +
+                "<span class='glyphicon glyphicon-user '></span>" + userEmail + "" + "</a>" +
                 "</div>" +
                 "<div class='col-sm-2'>" +
                 "<button class='btn glyphicon " + (existe ? 'glyphicon-star' : 'glyphicon-star-empty') + " post_button' data-postid='" + postData.id + "'></button>" +
@@ -28,7 +41,6 @@ function cargarPost(root) {
                 "<p>" + postData.body + "</p>" +
                 "</div>" +
                 "</div>";
-            console.log(post);
             $('#post').append(post);
         });
         $('.post_button').click(function () {
@@ -62,7 +74,6 @@ function cargarUsuarios(root) {
             console.log("La db local no esta nula");
             users = JSON.parse(dbUsers);
             for (let j = 0; j < users.length; j++) {
-                console.log(users);
                 addUsersToDb(users)
             }
         } else {
@@ -79,7 +90,6 @@ function cargarUsuarios(root) {
                     users.push(user);
                 });
             }
-            console.log(users.length);
             for (let user of users) {
                 if (user instanceof User) {
                     addUsersToDb(users)
